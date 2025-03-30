@@ -29,7 +29,7 @@ DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Ayush:AYUSHRA5354N@clu
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Ayush:AYUSHRA5354N@cluster0.lskh5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rahul')
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', ''))
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002534471850'))
 QR_CODE = environ.get('QR_CODE', 'https://envs.sh/wam.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 
