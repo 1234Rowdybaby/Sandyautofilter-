@@ -24,7 +24,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '')
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6046055058').split()]
 USERNAME = environ.get('USERNAME', 'https://t.me/Sandymaiwait')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002433610423'))
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002409171321').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002409171321 -1002694840394').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://priyankagogoi1241:2pIzssPdosNCT9UR@cluster0.htzgrxm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://new1:sandy008@cluster0.gtepjmb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
@@ -46,12 +46,12 @@ TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/+URI0ggQ1mLAyM2Y1")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/e6c8c517ee3f42d5d772e-331533c6320d361b70.jpg")
 SHORTENER_API = environ.get("SHORTENER_API", "7e5614ab72f04b5f6df4e1e93c8fca3bd1910574")
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "shortifyurl.in")
-SHORTENER_API2 = environ.get("SHORTENER_API2", "7e5614ab72f04b5f6df4e1e93c8fca3bd1910574")
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "shortifyurl.in")
-SHORTENER_API3 = environ.get("SHORTENER_API3", "7e5614ab72f04b5f6df4e1e93c8fca3bd1910574")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "shortifyurl.in")
-TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "86400"))
-THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "86400"))
+SHORTENER_API2 = environ.get("SHORTENER_API2", "5b22551890e0d5f2fded51fd64218868131bef1a")
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "shortner.in")
+SHORTENER_API3 = environ.get("SHORTENER_API3", "4690cec356c4fc0532c7abc613ffbcdef0c6ca06")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "Kingurl.in")
+TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "300"))
+THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "300"))
 
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
