@@ -25,7 +25,7 @@ ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ
 USERNAME = environ.get('USERNAME', 'https://t.me/Sandymaiwait')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002433610423'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002694840394').split()]
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://new1:sandy008@cluster0.gtepjmb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Chhhua34:Chhhua34@chhhua34.dpliye9.mongodb.net/?retryWrites=true&w=majority&appName=Chhhua34")
 DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Prahud232:Prahud232@cluster0.m7jmt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rahul')
