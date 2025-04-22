@@ -212,28 +212,6 @@ async def start(client:Client, message):
         await t.delete()
         return
 
-    type_, grp_id, file_id = data.split("_", 2)
-    files_ = await get_file_details(file_id)
-    if not files_:
-        return await message.reply('<b>⚠️ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>')
-    files = files_[0]
-    grp_id = int(grp_id)
-    user_id = message.from_user.id
-    settings = await get_settings(int(grp_id))
-    if type_ != 'shortlink' and not settings.get("is_verify", IS_VERIFY):
-        link = await get_shortlink(f"https://t.me/{temp.U_NAME}?start=shortlink_{user_id}_{file_id}", grp_id)
-        mention = message.from_user.mention
-        wish = get_status()
-        name = files.file_name
-        size = get_size(files.file_size)
-        btn = [[
-            InlineKeyboardButton("✅ ꜰɪʟᴇ ✅", url=link),
-            InlineKeyboardButton("⁉️ ʜᴏᴡ ᴛᴏ ᴏᴘᴇɴ ⁉️", url=settings['tutorial'])
-        ],[
-            InlineKeyboardButton("😁 ʙᴜʏ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ - ᴅɪʀᴇᴄᴛ ꜰɪʟᴇꜱ 😁", callback_data='buy_premium')
-        ]]
-        await message.reply(f"<b>ʜʏ {mention} {wish},</b>\n\n📂 𝐍𝐚𝐦𝐞 ➠  <code>{name}</code>\n\n♻️ 𝐒𝐢𝐳𝐞 ➠  {size}\n\n<b><i>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ʀᴇᴀᴅʏ, ᴘʟᴇᴀꜱᴇ ɢᴇᴛ ᴜꜱɪɴɢ ᴛʜɪꜱ ʟɪɴᴋ 😋.</i></b>", reply_markup=InlineKeyboardMarkup(btn), protect_content=True)
-        return
 
     files_ = await get_file_details(file_id)           
     if not files_:
@@ -297,7 +275,7 @@ async def settings(client, message):
                 InlineKeyboardButton('ʟɪɴᴋ' if settings["link"] else 'ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
             ],[
                 InlineKeyboardButton('ꜰɪʟᴇꜱ ᴍᴏᴅᴇ', callback_data=f'setgs#is_verify#{settings.get("is_verify", IS_VERIFY)}#{grp_id}'),
-                InlineKeyboardButton('ᴠᴇʀɪꜰʏ' if settings.get("is_verify", IS_VERIFY) else 'ꜱʜᴏʀᴛʟɪɴᴋ', callback_data=f'setgs#is_verify#{settings.get("is_verify", IS_VERIFY)}#{grp_id}')
+                InlineKeyboardButton('ᴠᴇʀɪꜰʏ' if settings.get("is_verify", IS_VERIFY) else 'ᴏꜰꜰ ✗', callback_data=f'setgs#is_verify#{settings.get("is_verify", IS_VERIFY)}#{grp_id}')
             ],[
                 InlineKeyboardButton('☕️ ᴄʟᴏsᴇ ☕️', callback_data='close_data')
             ]]
@@ -619,6 +597,47 @@ async def all_settings(client, message):
     dlt=await message.reply_text(text, reply_markup=reply_markup, disable_web_page_preview=True)
     await asyncio.sleep(300)
     await dlt.delete()
+
+
+@Client.on_message(filters.command("verifyoff") & filters.user(ADMINS))
+async def verifyoff(bot, message):
+    chat_type = message.chat.type
+    if chat_type == enums.ChatType.PRIVATE:
+        return await message.reply_text("ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋꜱ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘꜱ !")
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        grpid = message.chat.id
+        title = message.chat.title
+        # Get the chat details to find the owner
+        chat = await bot.get_chat(grpid)
+        group_owner_id = chat.owner.id if chat.owner else None
+        # Check if the user is either the bot owner or the group owner
+        if message.from_user.id not in ADMINS and message.from_user.id != group_owner_id:
+            return await message.reply_text("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.")
+    else:
+        return
+    await save_group_settings(grpid, 'is_verify', False)
+    return await message.reply_text("✓ ᴠᴇʀɪꜰʏ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅɪꜱᴀʙʟᴇᴅ.")
+
+    
+@Client.on_message(filters.command("verifyon") & filters.user(ADMINS))
+async def verifyon(bot, message):
+    chat_type = message.chat.type
+    if chat_type == enums.ChatType.PRIVATE:
+        return await message.reply_text("ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴡᴏʀᴋꜱ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘꜱ !")
+    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        grpid = message.chat.id
+        title = message.chat.title
+        # Get the chat details to find the owner
+        chat = await bot.get_chat(grpid)
+        group_owner_id = chat.owner.id if chat.owner else None
+        # Check if the user is either the bot owner or the group owner
+        if message.from_user.id not in ADMINS and message.from_user.id != group_owner_id:
+            return await message.reply_text("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.")
+    else:
+        return
+    await save_group_settings(grpid, 'is_verify', True)
+    return await message.reply_text("✗ ᴠᴇʀɪꜰʏ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴇɴᴀʙʟᴇᴅ.")
+
 
 @Client.on_message(filters.command('shortlink3'))
 async def set_shortner_3(c, m):
