@@ -50,13 +50,13 @@ SHORTENER_API2 = environ.get("SHORTENER_API2", "5b22551890e0d5f2fded51fd64218868
 SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "shortner.in")
 SHORTENER_API3 = environ.get("SHORTENER_API3", "7e609d0db7155014ae17d47582d1ffb073143a9e")
 SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "seturl.in")
-TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
+TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "300"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "10800"))
 
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
-auth_channel = environ.get('AUTH_CHANNEL', '-1002145371667')
+auth_channel = environ.get('AUTH_CHANNEL', '-1002260068200')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002459015261'))
 
