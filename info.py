@@ -38,20 +38,20 @@ BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002686020221'))
 URL = environ.get('URL', '')
 
 # verify system vars
-IS_VERIFY = is_enabled('IS_VERIFY', False)
+IS_VERIFY = is_enabled('IS_VERIFY', True)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002395784504'))
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/+URI0ggQ1mLAyM2Y1")
 TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/+URI0ggQ1mLAyM2Y1")
 TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/+URI0ggQ1mLAyM2Y1")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/e6c8c517ee3f42d5d772e-331533c6320d361b70.jpg")
-SHORTENER_API = environ.get("SHORTENER_API", "7e5614ab72f04b5f6df4e1e93c8fca3bd1910574")
-SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "shortifyurl.in")
-SHORTENER_API2 = environ.get("SHORTENER_API2", "5b22551890e0d5f2fded51fd64218868131bef1a")
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "shortner.in")
-SHORTENER_API3 = environ.get("SHORTENER_API3", "7e609d0db7155014ae17d47582d1ffb073143a9e")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "seturl.in")
+SHORTENER_API = environ.get("SHORTENER_API", "5b22551890e0d5f2fded51fd64218868131bef1a")
+SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "shortner.in")
+SHORTENER_API2 = environ.get("SHORTENER_API2", "df6b7a6ced3c648afba04c65bf28ec9a77008c56")
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "linkcents.com")
+SHORTENER_API3 = environ.get("SHORTENER_API3", "61e244281d3db2db29aee3180f7fa663dfbc18f2")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "curturl.com")
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "300"))
-THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "10800"))
+THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "7200"))
 
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
